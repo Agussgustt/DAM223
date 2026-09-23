@@ -1,6 +1,7 @@
 
-const retrogral = "Caja";
+const caja = "Caja";
 const pedidos = [];
+const IVA = 0.16;
 
 let totalPedidos = 0;
 
@@ -38,4 +39,10 @@ function mostrarPedidos(){
     console.log(" Total acomulado $"+totalPedidos);
 
 }
+
+agregarPedido("Hamburguesa", 80);
+agregarPedido("Refresco", 25);
+agregarPedido("Papas", 40);
+
+mostrarPedidos();
 
