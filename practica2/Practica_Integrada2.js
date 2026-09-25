@@ -19,31 +19,33 @@ const productos = [
     { id: 13, nombre: "cafe latte", precio: 40, cantidad: 10, categoria: "bebida" },
 ];
 
+//funcion para ordenar los productos de menor a mayor precio
 function menor() {
 let orden = (productos.sort(function (a, b){
     return a.precio - b.precio;
 }))
 let listaProductos = "";
     for (let i = 0; i < orden.length; i++) {
-        let p = promo[i];
+        let p = orden[i];
         listaProductos += p.id + ". " + p.nombre + " - $" + p.precio + " (Disponibles: " + p.cantidad + ")\n";
     }
     alert(listaProductos);
 }
 
+//funcion para ordenar los productos de mayor a menor precio
 function mayor() {
 let orden = (productos.sort(function (a, b){
     return b.precio - a.precio;
 }))
 let listaProductos = "";
     for (let i = 0; i < orden.length; i++) {
-        let p = promo[i];
+        let p = orden[i];
         listaProductos += p.id + ". " + p.nombre + " - $" + p.precio + " (Disponibles: " + p.cantidad + ")\n";
     }
     alert(listaProductos);
 }
 
-
+//funcion para mostrar los productos con descuento
 function promo() {
 let promo = productos.map(function(x) {return {...x,precio: x.precio * 0.5};});
 alert("Todos los productos al 50% del descuento");
@@ -79,11 +81,12 @@ function mostrarProductos() {
     return listaProductos;
 }
 
+//funcion para iniciar el pedido
 function iniciarPedido() {
     let continuar = true;
     while (continuar) {
         let listaProductos = mostrarProductos();
-        let menuMensaje = "Menu de la KFE\n" + listaProductos + "Ingrese el ID del producto que desea comprar (o presione Cancelar para salir):";
+        let menuMensaje = "Menu de la Cafeteria\n" + listaProductos + "Ingrese el ID del producto que desea comprar (o presione Cancelar para salir):";
 
         let opcion = prompt(menuMensaje);
 
@@ -127,8 +130,12 @@ function iniciarPedido() {
     continuar = confirm("Deseas agregar otro producto al pedido?");
     }
      mostrrarCuentaF();
+
+    let ultimoPedido = pedidos[pedidos.length - 1];
+    procesarPedido(ultimoPedido, notificarCliente); 
 }
 
+//funcion para mostrar la cuenta final del pedido
     function mostrrarCuentaF() {
     if (pedidos.length === 0) {
         alert("No hay productos en el pedido");
@@ -143,12 +150,12 @@ function iniciarPedido() {
     });
 
     let subtotal = pedidos.reduce((acumulador, pedido) => acumulador + (pedido.precio * pedido.cantidad), 0);
-    let ivaCalc = subtotal * IVA;
-    let total = subtotal + ivaCalc;
+    let ivaCalculado = subtotal * IVA;
+    let total = subtotal + ivaCalculado;
 
     resumen += ""
     resumen += `\nSubtotal: $${subtotal.toFixed(2)}\n`;
-    resumen += `IVA: $${(ivaCalc - subtotal).toFixed(2)}\n`;
+    resumen += `IVA: $${ivaCalculado.toFixed(2)}\n`;
     resumen += `Total a pagar: $${total.toFixed(2)}\n`;
     resumen += ""
     resumen += "Gracias por tu compra, vuelve pronto!\n";
@@ -157,14 +164,16 @@ function iniciarPedido() {
 
 }
 
+//funcion para listar los pedidos realizados
 function listarpedidos() {
- for (let i = 0; i < pedidos.length; i++) {
- const pedido = pedidos[i];
- let mensaje = "Producto: " + pedido.producto.nombre + " Precio: " + pedido.precio + " Cantidad: " + pedido.cantidad
- alert(mensaje);
+    for (let i = 0; i < pedidos.length; i++) {
+    const pedido = pedidos[i];
+    let mensaje = "Producto: " + pedido.producto.nombre + " Precio: " + pedido.precio + " Cantidad: " + pedido.cantidad
+    alert(mensaje);
  }
 }
 
+//funcion para mostrar las bebidas disponibles
 function bebidas() {
     let listaBebidas = productos.filter(producto => producto.categoria === "bebida");
 
@@ -175,6 +184,7 @@ function bebidas() {
     alert(mensajeBebidas);
 }
 
+//funcion para mostrar los postres disponibles
 function postres() {
     let listaPostres = productos.filter(producto => producto.categoria === "postre");
 
@@ -184,3 +194,62 @@ function postres() {
     });
     alert(mensajePostres);
 }
+
+function procesarPedido(pedido, callback) {
+    let listo = confirm(" El pedido esta listo? \n Presiona Aceptar si esta listo,\nCancelar si no lo esta");
+    if (listo) {
+        callback(pedido, "listo");
+    } else {
+        alert("El pedido no esta listo");
+    }
+}
+
+function notificarCliente(pedido, estado) {
+    if (estado === "listo") {
+        alert("El pedido de " + pedido.producto.nombre + " esta listo");
+    } else {
+        alert("El pedido de " + pedido.producto.nombre + " fue cancelado");
+    }
+}
+
+function cocinandoPedido() {
+    return new Promise((resolve, reject) => {
+        alert("Preparando el Pedido...");
+        setTimeout(function() {
+            let resultado = Math.random();
+            if (resultado > 0.6) {
+                resolve("El pedido está listo");
+            } else {
+                reject(" UPS! problemas en cocina \n No saldra el Pedido");
+            }
+        }, 3000);
+    });
+}
+
+function revisarIngredientes() {
+    return new Promise((resolve, reject) => {
+        alert("Revisando los ingredientes...");
+        setTimeout(function() {
+            let ingredientesDisponibles = Math.random();
+            if (ingredientesDisponibles > 0.4) {
+                resolve("Los ingredientes están disponibles");
+            } else {
+                reject("Los ingredientes no están disponibles");
+            }
+        }, 2000);
+    });
+}
+
+function prepararPedido() {
+    revisarIngredientes()
+        .then(function(mensaje) {
+            alert(mensaje);
+            return cocinandoPedido();
+        })
+        .then(function(mensaje){
+            alert(" :D "+mensaje);
+        })
+        .catch(function(error){
+            alert(" :C "+error);
+        });
+    }

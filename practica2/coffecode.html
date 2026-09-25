@@ -4,29 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Cafeteria </title>
+    <link rel="stylesheet" href="csscafe/estilos.css">
 </head>
 <body>
+
+    <div class="main-container">
+
+        <section class="seccion">
     <h1> Pedidos de la Cafeteria </h1>
     <p> Da click en el boton para realizar un pedido </p>
-
-    <button onclick="iniciarPedido()">Realizar Pedido</button>
-
-
+     
     <h1> Menu dinamico para el cliente </h1>
     <p> Elige la opcion de tu preferencia </p>
+
+
+    <div class="grupo-botones">
+    <button onclick="iniciarPedido()">Realizar Pedido</button>
 
     <button onclick="mostrarProductos()">Ver todos los productos a precio normal</button>
     <button onclick="bebidas()">Ver solo Bebidas a precio normal</button>
     <button onclick="postres()">Ver solo Postres a precio normal</button>
     <button onclick="promo()">Ver promociones</button>
+    </div>
+        </section> 
 
-
+        <section class="seccion">
     <h1> Funciones del operador </h1>
     <p> Da click en el boton para realizar una operación </p>
-
+            <div class="grupo-botones">
     <button onclick="mostrarProductos()">Listar productos</button>
+    <button onclick="menor()">Productos de menor a mayor Precio</button>
+    <button onclick="mayor()">Productos de mayor a menor Precio</button>
     <button onclick="listarpedidos()">Listar pedidos</button>
     <button onclick="agregarproducto()">Agregar producto</button>
+    <button onclick="prepararPedido()"> Preparar pedido </button>
+        </div>
+        </section> 
 
     <script src="Practica_Integrada2.JS"></script>
 
