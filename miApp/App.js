@@ -1,15 +1,27 @@
+/* 1-ZONA DE IMPORTACIONES  */
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { Saludo } from './components/Saludo';
+import { Saludo2 } from './components/Saludo2';
 
+/* 2- ZONA DE COMPONENTE PRINCIPAL (COMPONENTES O SCREENS) */
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text> Hola Mundo React Native!</Text>
+      <Image
+        source={require('./assets/wave.png')}
+        style={{ width: 100, height: 100 }}
+      />
+      <Saludo/>
+      <Saludo2/>
       <StatusBar style="auto" />
     </View>
   );
 }
 
+
+/* 3- ZONA DE ESTILOS  */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
