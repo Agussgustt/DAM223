@@ -6,6 +6,7 @@ export const Saludo2 = () => {
       <Text>Hola RN: Componente Compuesto </Text>
       <Image source={require('../assets/wave.png')}/>
       <Button title="Presiona para saludar"></Button>
+      {/* uso de las props al indicarle al boton que tenga un titulo */}
     </View>
   );
 }

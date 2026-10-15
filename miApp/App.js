@@ -16,7 +16,11 @@ export default function App() {
       />
       <Saludo/>
       <Saludo2/>
-      <Perfil/>
+      <Perfil 
+      nombre="Agustin Rivera"
+      carrera="ITIID"
+      materia="Movil"
+      cuatri="4to" />
       <StatusBar style="auto" />
     </View>
   );

@@ -1,13 +1,25 @@
-import { Text, View} from 'react-native';
+import { Text, View, Button} from 'react-native';
+import { useState } from 'react';
+/* importar el useState */
 
-export const Perfil = () => {
+export const Perfil = ({nombre, carrera, materia, cuatri}) => {
+  const[mostrar, setMostrar] = useState(false);
+  /* declarar el estado como const */
+
   return (
     <View>
-        <Text>Hola RN: Componente Propio </Text>
-        <Text>Nombre: Agustin Rivera </Text>
-        <Text>Carrera: ITIID </Text>
-        <Text>Materia: Programacion de App Moviles</Text>
-        <Text>Cuatrimestre: 4 </Text>
+        <Text>{nombre}</Text>
+
+        { mostrar &&
+        <>
+        <Text>{carrera}</Text>
+        <Text>{materia}</Text> {/* uso de los signos <> para un fragmentado</> */}
+        <Text>{cuatri}</Text>
+        </>
+        }
+        <Button title="Ver Perfil" onPress={() => setMostrar(!mostrar)}></Button>
+       {/*  definicion de boton como disparador con la ayuda de una funcion flecha */}
+       
     </View>
     );
 }
