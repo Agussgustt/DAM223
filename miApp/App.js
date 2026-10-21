@@ -1,26 +1,34 @@
 /* 1-ZONA DE IMPORTACIONES  */
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Saludo } from './components/Saludo';
-import { Saludo2 } from './components/Saludo2';
+/* import { Saludo } from './components/Saludo';
+import { Saludo2 } from './components/Saludo2'; */
 import { Perfil } from './components/Perfil';
 
 /* 2- ZONA DE COMPONENTE PRINCIPAL (COMPONENTES O SCREENS) */
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text> Hola Mundo React Native!</Text>
-      <Image
-        source={require('./assets/wave.png')}
-        style={{ width: 100, height: 100 }}
-      />
-      <Saludo/>
-      <Saludo2/>
       <Perfil 
       nombre="Agustin Rivera"
       carrera="ITIID"
       materia="Movil"
-      cuatri="4to" />
+      cuatri="4to"
+      style={styles.tarjeta1} />
+
+      <Perfil 
+      nombre="Karen hdz"
+      carrera="ITIID"
+      materia="Movil"
+      cuatri="4to"
+      style={styles.tarjeta2} />
+
+      <Perfil 
+      nombre="Kevin Pina"
+      carrera="ITIID"
+      materia="Movil"
+      cuatri="4to"
+      style={styles.tarjeta3} />
       <StatusBar style="auto" />
     </View>
   );
@@ -32,7 +40,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  tarjeta1: {
+    backgroundColor:'lightblue',
+  },
+  tarjeta2: {
+    backgroundColor:'lightgreen',
+  },
+  tarjeta3: {
+    backgroundColor:'lightcoral',
   },
 });
