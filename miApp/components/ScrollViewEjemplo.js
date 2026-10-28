@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 export default function ScrollViewEjemplo(){
     const[desplazar, setDesplazar] = useState(true);
     return(
-        <view style={style.container}>
+        <View style={style.container}>
             <Text style={style.titulo}> Ejemplo de Scrollview</Text>
             <Button
             title={ desplazar ? 'desactivar desplazamiento': 'activar desplazamiento'}
@@ -14,16 +14,16 @@ export default function ScrollViewEjemplo(){
 
             <ScrollView
             style={style.lista}
-            contentContainerStyle={styles.contenido}
+            contentContainerStyle={style.contenido}
             showsVerticalScrollIndicator={true}
             scrollEnabled={desplazar}>
 
-                <View style={styles.tarjeta1}><Text> Tarjeta 1 </Text></View>
-                <View style={styles.tarjeta2}><Text> Tarjeta 2 </Text></View>
-                <View style={styles.tarjeta3}><Text> Tarjeta 3 </Text></View>
-                <View style={styles.tarjeta4}><Text> Tarjeta 4 </Text></View>
+                <View style={style.tarjeta1}><Text> Tarjeta 1 </Text></View>
+                <View style={style.tarjeta2}><Text> Tarjeta 2 </Text></View>
+                <View style={style.tarjeta3}><Text> Tarjeta 3 </Text></View>
+                <View style={style.tarjeta4}><Text> Tarjeta 4 </Text></View>
                 </ScrollView>
-                </view>
+                </View>
 
     );
 }
@@ -48,13 +48,13 @@ const style = StyleSheet.create({
         paddingBottom: 20,
     },
     tarjeta1:{
-        backgroundColor: 'blue', padding: 25, marginBottom: 10, borderRadius: 8},
+        backgroundColor: 'lightblue', padding: 25, marginBottom: 10, borderRadius: 8},
     tarjeta2:{
-        backgroundColor: 'red', padding: 25, marginBottom: 10, borderRadius: 8},
+        backgroundColor: 'lightgreen', padding: 25, marginBottom: 10, borderRadius: 8},
     tarjeta3:{
-        backgroundColor: 'gray', padding: 25, marginBottom: 10, borderRadius: 8},
+        backgroundColor: 'lightcoral', padding: 25, marginBottom: 10, borderRadius: 8},
     tarjeta4:{
-        backgroundColor: 'green', padding: 25, marginBottom: 10, borderRadius: 8},
+        backgroundColor: 'gray', padding: 25, marginBottom: 10, borderRadius: 8},
     
 
 });

@@ -22,7 +22,7 @@ export default function SafeAEjemplo(){
 
 const style = StyleSheet.create({
     container:{
-        backgroundColor: 'red',
+        backgroundColor: 'lightcoral',
         padding:20,
         alightItemes: 'center',
         borderRadius:10,
