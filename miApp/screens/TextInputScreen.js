@@ -23,9 +23,8 @@ export default function TextInputScreen() {
     const faltantes = [];
     if(nombre.trim() === ''){
       faltantes.push("Nombre");
-      
     }
-    if(correo.trim() = ''){
+    if(correo.trim() === ''){
       faltantes.push('Correo');
     }
     if(telefono.trim() === ''){
